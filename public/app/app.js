@@ -1,5 +1,11 @@
-var ShoppingListApp = angular.module('shoppingListApp', []);
+var ShoppingListApp = angular.module('ShoppingListApp',[]);
 
-ShoppingListApp.controller('Tabs', function ($scope) {
-
-})
+ShoppingListApp.controller('TabController',function(){
+    this.tab = 1;
+    this.setTab=function(selectedTab){
+      this.tab = selectedTab;  
+    };
+    this.isSet=function(givenTab){
+        return this.tab === givenTab;
+    };
+});
