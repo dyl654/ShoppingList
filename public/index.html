@@ -5,44 +5,54 @@
         <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" type = "text/css" href="styles.css">
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="app/app.js"></script>
         <meta charset="utf-8">
     </head>
-    <body>
-        <h1>Welcome to my shopping list maker!</h1>
-        <section>
-            <form>
-                <div>
-                    <label> Email:</label>
-                    <input type="text" placeholder="johndoe@email.com" name="email" required>
-                    <label> Password:</label>
-                    <input type="password" placeholder="password" name="password" required>
-                    <button type="submit">Login</button>
-                    <input type="checkbox">Remember Me
-                </div>
-            </form>
-        </section>
-        <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" href="#meal-planner">Meal Planner</a></li>
-            <li><a data-toggle="tab" href="#recipes">Recipes</a></li>
-            <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-        </ul>
-
-        <div class="tab-content">
-            <div id="meal-planner" class="tab-pane fade in active">
-                <h3>Meal Planner</h3>
-                <p>Some content.</p>
-            </div>
-            <div id="recipes" class="tab-pane fade">
+    <body ng-app ="ShoppingListApp">
+        <h1>Welcome to ... !</h1>
+        <section class="tab" ng-controller = "TabController as tab">
+            <ul class="nav nav-pills">
+                <li ng-class="{active: tab.isSet(1)}">
+                    <a href ng-click="tab.setTab(1)">This Week's Menu</a>
+                </li>
+                <li ng-class="{active: tab.isSet(2)}">
+                    <a href ng-click="tab.setTab(2)">Recipes</a>
+                </li>
+            </ul>
+            <div ng-show="tab.isSet(1)"><h3>This Week's Menu</h3></div>
+            <div ng-show="tab.isSet(2)">
                 <h3>Recipes</h3>
-                <p>Some content in menu 1.</p>
+                <h4>New Recipe:</h4>
+                <form>
+                    <label>Recipe Name:</label>
+                    <input type="text" placeholder="Recipe Name" name="recipe name" required> <br>
+                    <label>Ingredients list:</label>
+                    <input type="text" placeholder="1/4c flour" name="ingredients" required> <br>
+                    <label>Directions</label>
+                    <input type="text" placeholder="List out directions here" name="directions"> <br>
+                    <button type="submit">Submit</button>
+                </form>
+                <div ng-controller = "RecipeController as recipectrl">
+                    <div ng-repeat = "recipes in recipectrl.recipe">
+                        <h4><b>{{recipes.name}}</b></h4>
+                        <p>{{recipes.ingredients}}</p>
+                        <p>{{recipes.directions}}</p>
+                        <button type="submit" ng-click="recipe.changeAddToMenu()">Add to Menu</button>
+                        <section ng-show="recipes.addToMenu">
+                            <form>
+                                <input type="date">
+                                <input type="checkbox">Breakfast
+                                <input type="checkbox">Lunch
+                                <input type="checkbox">Dinner
+                                <input type="checkbox">Snack
+                                <button type="submit">Submit</button>
+                            </form>
+                        </section>
+                    </div>
+                </div>
             </div>
-            <div id="menu2" class="tab-pane fade">
-                <h3>Menu 2</h3>
-                <p>Some content in menu 2.</p>
-            </div>
-        </div>
+        </section>
     </body>
 </html>
