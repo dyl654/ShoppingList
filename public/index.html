@@ -22,24 +22,24 @@
                 </li>
             </ul>
             <div ng-show="tab.isSet(1)"><h3>This Week's Menu</h3></div>
-            <div ng-show="tab.isSet(2)">
+            <div ng-show="tab.isSet(2)" >
                 <h3>Recipes</h3>
                 <h4>New Recipe:</h4>
-                <form>
-                    <label>Recipe Name:</label>
-                    <input type="text" placeholder="Recipe Name" name="recipe name" required> <br>
-                    <label>Ingredients list:</label>
-                    <input type="text" placeholder="1/4c flour" name="ingredients" required> <br>
-                    <label>Directions</label>
-                    <input type="text" placeholder="List out directions here" name="directions"> <br>
-                    <button type="submit">Submit</button>
-                </form>
-                <div ng-controller = "RecipeController as recipectrl">
-                    <div ng-repeat = "recipes in recipectrl.recipe">
+                <div ng-controller = "recipeController as recipeCtrl">
+                    <div action = "">
+                        <label>Recipe Name:</label>
+                        <input type="text" placeholder="Recipe Name" name="recipe name" /> <br>
+                        <label>Ingredients list:</label>
+                        <input type="text" placeholder="1/4c flour" name="ingredients" ng-bind="recipeDirect.ingredient" /> <br>
+                        <label>Directions</label>
+                        <input type="text" placeholder="List out directions here" name="directions"> <br>
+                        <button ng-click="recipeDirect.addIngredient(recipeDirect.ingredient)">Submit</button>
+                    </div>
+                    <div ng-repeat = "recipes in recipeCtrl.recipe">
                         <h4><b>{{recipes.name}}</b></h4>
                         <p>{{recipes.ingredients}}</p>
                         <p>{{recipes.directions}}</p>
-                        <button type="submit" ng-click="recipe.changeAddToMenu()">Add to Menu</button>
+                        <button type="submit" ng-click="recipes.changeAddToMenu()">Add to Menu</button>
                         <section ng-show="recipes.addToMenu">
                             <form>
                                 <input type="date">
