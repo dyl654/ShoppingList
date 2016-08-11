@@ -1,0 +1,16 @@
+<div ng-repeat = "recipes in recipeCtrl.recipe">
+    <h4><b>{{recipes.name}}</b></h4>
+    <p>{{recipes.ingredients}}</p>
+    <p>{{recipes.directions}}</p>
+    <button type="submit" ng-click="recipe.changeAddToMenu()">Add to Menu</button>
+    <section ng-show="recipes.addToMenu">
+        <form>
+            <input type="date">
+            <input type="checkbox">Breakfast
+            <input type="checkbox">Lunch
+            <input type="checkbox">Dinner
+            <input type="checkbox">Snack
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+</div>
