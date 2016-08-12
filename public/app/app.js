@@ -1,6 +1,6 @@
 var ShoppingListApp = angular.module('ShoppingListApp',[]);
 
-ShoppingListApp.controller('TabController',function(){
+ShoppingListApp.controller('TabController',function($http, $window){
     this.tab = 1;
     this.setTab=function(selectedTab){
       this.tab = selectedTab;  
@@ -9,6 +9,14 @@ ShoppingListApp.controller('TabController',function(){
         return this.tab === givenTab;
     };
     this.addRecipe = false;
+    
+    this.init = function(){
+        $http.get("/api/isLoggedIn").then(function(response){
+            if(!response.data)
+                $window.location = "/login.html"
+        });
+    };
+    this.init();
 });
 
 ShoppingListApp.controller('RecipeController', function(){
