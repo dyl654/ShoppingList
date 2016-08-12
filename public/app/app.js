@@ -8,6 +8,7 @@ ShoppingListApp.controller('TabController',function(){
     this.isSet=function(givenTab){
         return this.tab === givenTab;
     };
+    this.addRecipe = false;
 });
 
 ShoppingListApp.controller('RecipeController', function(){
@@ -24,7 +25,43 @@ ShoppingListApp.controller('RecipeController', function(){
         }
     ]
     this.addToMenu = false;
-    
+    this.blah ={};
+    this.addNewRecipe = function(recipe){
+        recipes.push(recipe);
+    };
 });
-
-
+ShoppingListApp.controller('WeekTabController', function(){
+    var d = new Date();
+    var n = d.getDay();
+    this.tab = n;
+    this.setTab=function(selectedTab){
+      this.tab = selectedTab;  
+    };
+    this.isSet=function(givenTab){
+        return this.tab === givenTab;
+    };
+});
+ShoppingListApp.directive('weekTab', function(){
+   return{
+       restrict: 'E',
+       templateUrl: 'week-tab.html'
+   }; 
+});
+ShoppingListApp.directive('weekdayCheckbox', function(){
+   return{
+       restrict: 'E',
+       templateUrl: 'weekday-checkbox.html'
+   }; 
+});
+ShoppingListApp.directive('addNewRecipe', function(){
+   return{
+       restrict: 'E',
+       templateUrl: 'add-new-recipe.html'
+   }; 
+});
+ShoppingListApp.directive('showRecipes', function(){
+   return{
+       restrict: 'E',
+       templateUrl: 'show-recipes.html'
+   }; 
+});

@@ -1,0 +1,32 @@
+<h3>This Week's Menu</h3>
+<button type="button" class="btn btn-default" id="showshoppinglist">Show Shopping List</button>
+<ul class = "nav nav-tabs nav-justified">
+    <li ng-class = "{active: weekTab.isSet(0)}">
+        <a href ng-click = "weekTab.setTab(0)">Sunday</a>
+    </li>
+    <li ng-class = "{active: weekTab.isSet(1)}">
+        <a href ng-click = "weekTab.setTab(1)">Monday</a>
+    </li>
+    <li ng-class = "{active: weekTab.isSet(2)}">
+        <a href ng-click = "weekTab.setTab(2)">Tuesday</a>
+    </li>
+    <li ng-class = "{active: weekTab.isSet(3)}">
+        <a href ng-click = "weekTab.setTab(3)">Wednesday</a>
+    </li>
+    <li ng-class = "{active: weekTab.isSet(4)}">
+        <a href ng-click = "weekTab.setTab(4)">Thursday</a>
+    </li>
+    <li ng-class = "{active: weekTab.isSet(5)}">
+        <a href ng-click = "weekTab.setTab(5)">Friday</a>
+    </li>
+    <li ng-class = "{active: weekTab.isSet(6)}">
+        <a href ng-click = "weekTab.setTab(6)">Saturday</a>
+    </li>
+</ul>
+<div ng-show="weekTab.isSet(1)"></div>
+<div ng-show="weekTab.isSet(2)"></div>
+<div ng-show="weekTab.isSet(3)"></div>
+<div ng-show="weekTab.isSet(4)"></div>
+<div ng-show="weekTab.isSet(5)"></div>
+<div ng-show="weekTab.isSet(6)"></div>
+<div ng-show="weekTab.isSet(7)"></div>

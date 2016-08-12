@@ -1,0 +1,12 @@
+<form ng-show = "addRecipe" ng-submit = "addNewRecipe(blah)">
+    <h4>New Recipe:</h4>
+    <label>Recipe Name:</label><br>
+    <input type="text" placeholder="Recipe Name" ng-model="blah.Name"> <br>
+    {{blah.Name}}
+    <label>Ingredients list:</label><br>
+    <textarea placeholder = "Enter ingredients separated with a comma"
+              ng-model = "blah.IngredientList" ng-list ng-trim="false"></textarea> <br>
+    <label>Directions</label><br>
+    <input type="text" placeholder="List out directions here" ng-model = "blah.Directions"> <br>
+    <button type="submit">Submit</button>
+</form>

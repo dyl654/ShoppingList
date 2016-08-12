@@ -16,10 +16,10 @@
             <div>
                 <div class = "login" ng-controller = "LogInController">
                     <label> Username:</label>
-                    <input type="text" placeholder="username" ng-model ="uname"><br>
+                    <input type="text" placeholder="username" ng-model ="user.name"><br>
                     <label> Password:</label>
-                    <input type="password" placeholder="password" ng-model ="password">
-                    <button type="button" ng-click = "submit()">Login</button>
+                    <input type="password" placeholder="password" ng-model ="user.password">
+                    <button type="button" ng-click = "submit(user)">Login</button>
                     <input type="checkbox">Remember Me
                 </div>
             </div>

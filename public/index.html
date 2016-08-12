@@ -21,35 +21,15 @@
                     <a href ng-click="tab.setTab(2)">Recipes</a>
                 </li>
             </ul>
-            <div ng-show="tab.isSet(1)"><h3>This Week's Menu</h3></div>
+            <week-tab ng-show="tab.isSet(1)" ng-controller = "WeekTabController as weekTab" ></week-tab>
             <div ng-show="tab.isSet(2)">
                 <h3>Recipes</h3>
-                <h4>New Recipe:</h4>
-                <div>
-                    <label>Recipe Name:</label><br>
-                    <input type="text" placeholder="Recipe Name" name="recipe name" required> <br>
-                    <label>Ingredients list:</label><br>
-                    <textarea ng-model = "ingredients" ng-list="&#10;" ng-trim="false"></textarea> <br>
-                    <label>Directions</label><br>
-                    <input type="text" placeholder="List out directions here" name="directions"> <br>
-                    <button type="submit">Submit</button>
-                </div>
                 <div ng-controller = "RecipeController as recipeCtrl">
+                    <button type="button" class="btn btn-default" ng-click = "addRecipe = !addRecipe">Add New Recipe</button>
+                    <add-new-recipe></add-new-recipe>
                     <div ng-repeat = "recipe in recipeCtrl.recipes">
-                        <h4><b>{{recipe.Name}}</b></h4>
-                        <p>{{recipe.IngredientList}}</p>
-                        <p>{{recipe.Directions}}</p>
-                        <button type="submit" ng-click = "addToMenu = !addToMenu">Add to Menu</button>
-                        <section ng-show="addToMenu">
-                            <div>
-                                <input type="date">
-                                <input type="checkbox">Breakfast
-                                <input type="checkbox">Lunch
-                                <input type="checkbox">Dinner
-                                <input type="checkbox">Snack
-                                <button type="submit">Submit</button>
-                            </div>
-                        </section>
+                        <show-recipes></show-recipes>
+                        <weekday-checkbox></weekday-checkbox>
                     </div>
                 </div>
             </div>
