@@ -1,4 +1,5 @@
 import cherrypy
+import json
 
 class Server(object):
     def __init__(self):
@@ -28,13 +29,21 @@ class Server(object):
             return ""
     
     @cherrypy.expose
+    @cherrypy.tools.json_out()
     def addUser(self, username, password):
         self.users.addLogIn(username, password)
+        return True
         
     @cherrypy.expose
     @cherrypy.tools.json_out()
     def isLoggedIn(self):
         return "username" in cherrypy.session
+    
+    @cherrypy.expose
+    @cherrypy.tools.json_out()
+    def getdata(self):
+        return self.users.loadData('recipes.json')
+    
     
 class UserRepository(object):
     def __init__(self):
@@ -48,6 +57,11 @@ class UserRepository(object):
     
     def addLogIn(self, username, password):
         self.data.append((username, password))
+        
+    def loadData(self, newFile):
+        with open(newFile) as data_file:
+            data = json.load(data_file)
+        return data
         
 
 if __name__ == '__main__':

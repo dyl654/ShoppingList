@@ -8,6 +8,7 @@
         <link rel="stylesheet" type = "text/css" href="styles.css">
         <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
         <script src="app/login.js"></script>
+        <script src="app/login-controller.js"></script>
         <meta charset="utf-8">
     </head>
     <body ng-app ="Login">
@@ -18,9 +19,9 @@
                     <label> Username:</label>
                     <input type="text" placeholder="username" ng-model ="user.name"><br>
                     <label> Password:</label>
-                    <input type="password" placeholder="password" ng-model ="user.password">
-                    <button type="button" ng-click = "submit(user)">Login</button>
-                    <input type="checkbox">Remember Me
+                    <input type="password" placeholder="password" ng-model ="user.password"> <br>
+                    <button type="button" ng-click = "submit(user)">Login</button> 
+                    <button type="button" ng-click = "addNewUser(user)">Add New User</button>
                 </div>
             </div>
         </section>
